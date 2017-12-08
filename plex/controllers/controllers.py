@@ -13,12 +13,6 @@ class PlexController(http.Controller):
     
     @http.route('/plex/webhook',methods=['GET','POST'],type="http",auth='public',csrf=False)
     def plexWebhookHttpd(self,**kwargs):
-#         _logger.debug('plex/webhook' + str(kwargs))
-#         _logger.debug('plex/webhook type' + str(type(kwargs)))
-#         _logger.debug('plex/webhook payload' + str(kwargs['payload']))
-#         _logger.debug('plex/webhook payload type' + str(type(kwargs['payload'])))
-#         _logger.debug('plex/webhook payload event' + str(kwargs['payload']['event']))
-#         json_acceptable_string = str(kwargs['payload']).replace("'", "\"")
         if 'payload' in kwargs.keys():
             data = json.loads(kwargs['payload'])
             vals = {}
@@ -35,6 +29,10 @@ class PlexController(http.Controller):
                     vals['summary'] = data['Metadata']['summary']
                 if 'ratingKey' in data['Metadata'].keys():
                     vals['rating_key'] = data['Metadata']['ratingKey']
+                if 'grandparentTitle' in data['Metadata'].keys():
+                    vals['show_title'] = data['Metadata']['grandparentTitle']
+                if 'parentTitle' in data['Metadata'].keys():
+                    vals['show_season'] = data['Metadata']['parentTitle']
             if 'Server' in data.keys():
                 if 'uuid' in data['Server'].keys():
                     vals['server_uuid'] = data['Server']['uuid']

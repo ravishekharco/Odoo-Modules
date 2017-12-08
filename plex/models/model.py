@@ -23,6 +23,8 @@ class Plex(models.Model):
     player_uuid = fields.Text(string='Player UUID')
     server_uuid = fields.Text(string='Server UUID')
     content_url = fields.Html(string='Content URL', compute='_compute_content_url', store=True)
+    show_title = fields.Text(string='Show')
+    show_season = fields.Text(string='Season')
     _rec_name= "name"
     
     @api.multi

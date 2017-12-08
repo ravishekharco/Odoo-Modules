@@ -8,8 +8,8 @@
                 <tree string="Activities">
 		                    <field name="create_date" />
                     		<field name="title"/>
-		                    <field name="event" />
 		                    <field name="type" />
+		                    <field name="event" />
 		                    <field name="content_rating" />
 		                    <field name="player_title" />
                 </tree>
@@ -24,13 +24,16 @@
                     <sheet>
                         <group>
                     		<field name="title"/>
+		                    <field name="type" />
+		                    <field name="show_title" attrs="{'invisible': [('type', '!=', 'episode')]}"/>
+		                    <field name="show_season" attrs="{'invisible': [('type', '!=', 'episode')]}"/>
                     		<field name="summary" />
 		                    <field name="event" />
-		                    <field name="type" />
 		                    <field name="content_rating" />
 		                    <field name="player_title" />
 		                    <field name="content_url" />
 		                    <field name="create_date" />
+		                    
                         </group>
                     </sheet>
                 </form>
