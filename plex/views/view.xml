@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+       <record model="ir.ui.view" id="view_plex_activities_tree">
+            <field name="name">Activities</field>
+            <field name="model">plex_activities</field>
+            <field name="arch" type="xml">
+                <tree string="Activities">
+		                    <field name="create_date" />
+                    		<field name="title"/>
+		                    <field name="event" />
+		                    <field name="type" />
+		                    <field name="content_rating" />
+		                    <field name="player_title" />
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_plex_activities_form">
+            <field name="name">Activities</field>
+            <field name="model">plex_activities</field>
+            <field name="arch" type="xml">
+                <form string="Activities">
+                    <sheet>
+                        <group>
+                    		<field name="title"/>
+                    		<field name="summary" />
+		                    <field name="event" />
+		                    <field name="type" />
+		                    <field name="content_rating" />
+		                    <field name="player_title" />
+		                    <field name="content_url" />
+		                    <field name="create_date" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="plex_activities_menu_action">
+            <field name="name">Activities</field>
+            <field name="res_model">plex_activities</field>
+            <field name="view_mode">list,form</field>
+        </record>
+        
+
+        <menuitem id="plex_menu_root" name="Plex" groups="base.group_user" web_icon="plex,static/description/icon.png" sequence="222"/>
+        <menuitem id="plex_activities_menu_root" name="Activities" parent="plex_menu_root"  action="plex_activities_menu_action" groups="base.group_user" sequence="5"/>
+
+    </data>
+</odoo>
